@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="containeur">
+        <div class="hangman_info">
+            <div class="hangman-name">Hangman</div>
+            <div class="category"> Word From :<select class="category-select"> <option selected disabled>select category</option><option value="programming">programming</option><option value="famous">famous</option></select> </div> 
+        </div>
+        <hr>
+        <div class="row">
+            <div class="hangman-draw">
+               <div class="gibbet">
+                  <div class="wood">
+                  </div>
+                  <div class="rope">
+                  </div>
+               </div>
+               <div class="someone">
+                <div class="head">
+                </div>
+                <div class="body">
+                    <div class="back">
+                    </div>
+                    <div class="legs">
+                    </div>
+                </div>
+               </div>
+            </div>
+            <div class="letters">
+            </div>
+        </div>
+        <hr>
+        <div class="containeur-letters-guess">
+            <div class="letters-guess">
+                 
+            </div>
+        </div>
+        <audio controls id="music_sound_correct">
+            <source src="correct.mpeg"  type="audio/mpeg">   
+        </audio>
+        <audio controls id="music_sound_not_correct">
+            <source src="not_correct.mpeg"    type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

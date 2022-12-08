@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+}
+.containeur {
+    margin: 20px 30px;
+}
+.hangman_info {
+   display: flex;
+  justify-content:space-between;
+}
+hr {
+    margin: 2px;
+}
+.hangman-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+ select {
+  width: 127px;
+  height: 20px;
+  font-size: 14px;
+ }
+/*parent hangman draw and letters*/
+.row {
+    display: flex; 
+    width: 100%;
+    height: 300px;
+}
+
+/* start style hang man*/
+.hangman-draw {
+    width: 50%;
+    background-color: #72859e11;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* start style gibbet */
+.gibbet {   
+  padding: 10px;
+  display: flex;
+  position: relative;
+  width: 122px;
+}
+.wood {
+    width: 3px;
+    height:260px;
+    background-color: #222;
+    transition: 1s;
+    position: relative;
+    display:none;
+}
+
+.wood::before {
+    content: "";
+    width: 100px;
+    height: 3px;
+    background-color:#222;  
+    position: absolute; 
+    top:9px;
+    display:none;
+}
+.wood::after {
+    content: "";
+    width: 100px;
+    height: 3px;
+    background-color:#222;
+    position: absolute; 
+    bottom: 0;
+    transform: translate(-50%);
+    display:none;
+} 
+
+.rope {
+    width: 3px;
+    height:44px;
+    background-color:black;
+    top:9px;
+    margin-left: 96px;   
+    position: relative;
+    display:none;
+}
+.rope::after {
+    content: "";
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px dashed #222;
+    position: absolute;
+    transform: translate(-50%);
+    top: 40px;
+    display:none;
+} 
+/* end style gibbet */
+ /*srtart  style some-one*/
+
+.someone {
+    position:  absolute;
+    width: 100px;
+    height: 212px;
+    z-index: 999;
+    /* background-color: orange; */
+    transform: translate(50%);
+    top: 58px;
+    display: flex;
+    justify-content: center;
+   
+}
+.someone .head {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid black;  
+    top:9px;
+    right:26px;
+    display:none;
+}
+.someone .body .back  {
+   position: relative;
+   display:none;
+   width:2px;
+   height:100px;
+   background-color:black;
+   top:58px;
+}
+.someone .body .back::before  {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height:50px;
+    right:9px;
+    top:20px; 
+   background-color:black;
+   transform: rotate(20deg); 
+ 
+ }
+ .someone .body .back::after  {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height:50px;
+    left:9px;
+    top:20px; 
+   background-color:black;
+   transform: rotate(-20deg); 
+ }
+ .someone .body .legs  {
+    position: relative;
+    display:none;
+ }
+ .someone .body .legs::after  {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height:40px;
+    top:51px;
+    right:10px; 
+   background-color:black;
+   transform: rotate(30deg);
+  
+ }
+ .someone .body .legs::before  {
+  
+    content: "";
+    position: absolute;
+    width: 2px;
+    height:40px;
+    top:51px;
+    left:10px; 
+   background-color:black;
+   transform: rotate(-30deg);
+   
+ }
+ /*end style some-one*/
+/* end style hang man*/
+
+/*start style letters*/
+.letters {
+    display: flex;
+    width: 50%;
+    background-color:#72859e11;
+    flex-wrap: wrap;
+    justify-content: center;    
+    align-content:space-around ;
+}
+.span-letter {
+    width: calc(88% /6);
+    height: 38px;   
+    background-color: aqua;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.span-letter-clicked {
+    opacity: 0.5;
+    /* cursor: none; */
+    pointer-events: none;
+}
+/*end style letters*/
+.containeur-letters-guess {
+    display: flex;
+    background-color: #72859e11;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.letters-guess {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+} 
+.spanLettersGuess {
+    width: 30px;
+    height: 20px;
+    /* background-color: blanchedalmond; */
+    margin-right: 5px;
+    border-bottom: 3px solid #222 ;
+    align-items: center;
+    text-align: center;
+    font-size: 29px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    /* padding: 4px; */
+
+} 
+
+ .hangman-draw.error1 .wood  {
+   display: block;
+ }
+ .hangman-draw.error2 .wood::before {
+   display: block;
+ }
+ .hangman-draw.error3 .wood::after  {
+    display: block;
+  }
+ 
+  .hangman-draw.error4 .rope  {
+    display: block;
+  }
+  .hangman-draw.error5 .rope::after  {
+    display: block;
+  }
+  .hangman-draw.error6 .someone  .head  {
+    display: block;
+  }
+  .hangman-draw.error7 .someone .body .back,.hangman-draw.error7 .someone .body .legs   {
+    display: block;
+  }
+  #music_sound_correct,#music_sound_not_correct {
+    display: none;
+  }
+  
