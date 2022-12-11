@@ -1,18 +1,16 @@
 let lettersEl = document.querySelector(".letters");
 let lettersGuess = document.querySelector(".letters-guess");
-let letters = "abcdefghijklmnopqrstuvwxyz";
 let hangmanDraw = document.querySelector(".hangman-draw");
 let category = document.querySelector(".category-select");
 let music_music_sound_correct = document.querySelector("#music_sound_correct");
 let music_music_sound_not_correct = document.querySelector("#music_sound_not_correct");
 let SpanLettersGuess = "";
 let spanLetters =""
-let arrayLetters = [];
-arrayLetters = letters.split("");
+let arrayLetters = [..."abcdefghijklmnopqrstuvwxyz"];
 let number_error = 0;
 let number_correct = 0;
 let words = {
-  programming: ["java", "python", "c", "javascript"],
+  programming: ["jav"],
   famous: ["abdessamad", "ohtmen", "me"],
 };
 let randomWord = [];
@@ -22,7 +20,6 @@ category.focus();
 
 // display letters in page leters
 function show_letters() {
-  arrayLetters = letters.split("");
   // create letters
   arrayLetters.forEach((value) => {
     let letterSpan = document.createElement("span");
@@ -54,14 +51,17 @@ document.addEventListener("click", (e) => {
     let SpanGuessText = document.createTextNode(e.target.innerHTML);
 
     // verifer if this correct letter
-    randomWord.forEach((text, index) => {
-      if (e.target.innerHTML == text) {
+    for(let i =0;i<randomWord.length;i++) {
+      if (e.target.innerHTML == randomWord[i] ) {
         // show in span letter guess
-        SpanLettersGuess[index].appendChild(SpanGuessText);
+        SpanLettersGuess[i].appendChild(SpanGuessText);
         correct_letter = true;
-        number_correct++;
+        break;
       }
-    });
+    }
+    // randomWord.forEach((text, index) => {
+     
+    // });
    // when not find letter clicked in random
     if (!correct_letter) {
       // play music
@@ -70,21 +70,29 @@ document.addEventListener("click", (e) => {
       hangmanDraw.classList.add(`error${++number_error}`);
       // lose game
       if (number_error == 7) {
-        alert("game over");
-        end_game();
-        number_error = 0;
+        setTimeout(()=> {
+          alert("game over");
+          end_game();
+         
+        },300)
       }
     } else {
+      number_correct++;
       // when choose the correct letter 
       music_music_sound_not_correct.currentTime = 1.5;
       music_music_sound_not_correct.play();
+
       // when 
       if (number_correct == randomWord.length) {
-        alert("you win on game");
-        end_game();
-        number_correct = 0;
+        setTimeout(()=> {
+          alert("you win on game");
+          end_game();
+        },1)
+        
       }
     }
+    console.log(number_error)
+    console.log(number_correct)
   }
 });
 
@@ -116,4 +124,6 @@ function end_game() {
   for (let i = 1; i <= 7; i++) {
     hangmanDraw.classList.remove(`error${i}`);
   }
+  number_error = 0;
+  number_correct = 0;
 }
